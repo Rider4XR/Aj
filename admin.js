@@ -1,0 +1,3 @@
+const demo=[{id:'RXR10291',fare:98,payout:65,status:'Searching rider'},{id:'RXR10292',fare:173,payout:130,status:'Assigned'}];
+function render(){ document.getElementById('totalOrders').textContent=demo.length; const rev=demo.reduce((a,o)=>a+o.fare,0), pay=demo.reduce((a,o)=>a+o.payout,0); document.getElementById('revenue').textContent='₹'+rev; document.getElementById('payout').textContent='₹'+pay; document.getElementById('profit').textContent='₹'+(rev-pay); document.getElementById('adminOrders').innerHTML=demo.map(o=>`<div class="order"><strong>${o.id}</strong><p>Status: ${o.status}</p><p>Fare ₹${o.fare} • Rider ₹${o.payout}</p></div>`).join('');}
+render();

@@ -1,0 +1,7 @@
+import { UPI_ID,CUSTOMER_RATE_PER_KM,RIDER_PAYOUT_PER_KM,BASE_DISTANCE_KM,BASE_FARE,PLATFORM_FEE } from './firebase-config.js';
+let distance=0, fare=0, payout=0;
+function calcFare(km){ const extra=Math.max(0,km-BASE_DISTANCE_KM); return Math.round(BASE_FARE+PLATFORM_FEE+(extra*CUSTOMER_RATE_PER_KM)); }
+function calcPayout(km){ return Math.round(km*RIDER_PAYOUT_PER_KM); }
+document.getElementById('useCurrentBtn').onclick=()=>navigator.geolocation?.getCurrentPosition(pos=>{document.getElementById('pickup').value=`Current location: ${pos.coords.latitude.toFixed(5)}, ${pos.coords.longitude.toFixed(5)}`},()=>alert('Location permission allow karo'));
+document.getElementById('calcBtn').onclick=()=>{ const fake=prompt('Demo distance KM enter karo. Google Routes API connect hone ke baad auto hoga.','5'); distance=Number(fake||0); fare=calcFare(distance); payout=calcPayout(distance); document.getElementById('distanceText').textContent=distance+' KM'; document.getElementById('fareText').textContent='₹'+fare; document.getElementById('payoutText').textContent='₹'+payout; };
+document.getElementById('payBtn').onclick=()=>{ if(!fare){alert('Pehle fare calculate karo');return;} const name=document.getElementById('custName').value||'Customer'; const upi=`upi://pay?pa=${UPI_ID}&pn=Rider4XR&am=${fare}&cu=INR&tn=Rider4XR booking by ${encodeURIComponent(name)}`; window.location.href=upi; document.getElementById('statusText').textContent='Booking created - searching rider'; alert('Demo booking created. Firebase connect hone ke baad rider panel me ring bajegi.'); };

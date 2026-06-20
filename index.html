@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rider4XR | Login</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-page">
+  <div class="bike-bg"></div>
+  <main class="login-shell">
+    <section class="brand-card glass">
+      <div class="logo-mark">R4</div>
+      <p class="eyebrow">Fast local delivery</p>
+      <h1>Rider4XR</h1>
+      <p class="muted">Customer booking aur rider ringing system ek secure Firebase backend se connected.</p>
+    </section>
+
+    <section class="login-card glass">
+      <h2>Mobile Login</h2>
+      <p class="muted">OTP verify ke baad customer ya rider panel choose karo.</p>
+      <label>Mobile Number</label>
+      <div class="phone-row">
+        <span>+91</span>
+        <input id="phoneNumber" type="tel" maxlength="10" placeholder="9876543210" />
+      </div>
+      <div id="recaptcha-container"></div>
+      <button id="sendOtpBtn" class="primary">Send OTP</button>
+
+      <div id="otpBox" class="hidden">
+        <label>OTP</label>
+        <input id="otpCode" type="text" maxlength="6" placeholder="6 digit OTP" />
+        <button id="verifyOtpBtn" class="primary">Verify & Continue</button>
+      </div>
+
+      <div id="roleBox" class="role-box hidden">
+        <h3>Choose Panel</h3>
+        <a class="role-btn" href="customer.html">Book Delivery</a>
+        <a class="role-btn outline" href="rider.html">Rider Panel</a>
+        <a class="role-btn admin" href="admin.html">Admin Panel</a>
+      </div>
+      <p class="tiny">Demo mode: Firebase config add karne ke baad real OTP chalega.</p>
+    </section>
+  </main>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="login.js"></script>
+</body>
+</html>

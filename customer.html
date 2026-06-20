@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rider4XR | Customer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar"><div class="logo-mark small">R4</div><strong>Customer Booking</strong><a href="index.html">Login</a></header>
+  <main class="app-grid">
+    <section class="panel">
+      <h1>Book Delivery</h1>
+      <label>Your Name</label><input id="custName" placeholder="Customer name" />
+      <label>Pickup Location</label><input id="pickup" placeholder="Search pickup on Google" />
+      <button class="ghost" id="useCurrentBtn">Use Current Location</button>
+      <label>Drop Location</label><input id="drop" placeholder="Search drop location" />
+      <div class="fare-card">
+        <div><span>Distance</span><strong id="distanceText">-- KM</strong></div>
+        <div><span>Customer Fare</span><strong id="fareText">₹--</strong></div>
+        <div><span>Rider Payout</span><strong id="payoutText">₹--</strong></div>
+      </div>
+      <button class="primary" id="calcBtn">Calculate Fare</button>
+      <button class="primary pay" id="payBtn">Pay UPI / Book Now</button>
+      <p class="tiny">Fare: minimum ₹50 up to 2.5KM + ₹10 platform fee. Extra KM ₹15. Rider payout ₹13/KM.</p>
+    </section>
+    <section class="map-panel"><div id="map"></div><div class="tracking-card"><strong id="statusText">Ready for booking</strong><span id="trackText">Rider accept karega to live tracking yahan dikhegi.</span></div></section>
+  </main>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="customer.js"></script>
+</body>
+</html>
