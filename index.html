@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rider4XR OTP Login Demo</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand"><div class="logo">R4X</div><div><h1>Rider4XR</h1><p>Bike ride & parcel platform</p></div></div>
+      <button id="logoutBtn" class="ghost hidden">Logout</button>
+    </header>
+
+    <main id="loginScreen" class="screen active">
+      <section class="hero">
+        <span class="badge">Demo OTP Login</span>
+        <h2>Login to Rider4XR</h2>
+        <p class="muted">Select role, enter mobile, tap Send OTP, then enter demo OTP.</p>
+        <div class="roles">
+          <button class="role active" data-role="customer">Customer<br><small>OTP 1234</small></button>
+          <button class="role" data-role="rider">Rider<br><small>OTP 9090</small></button>
+          <button class="role" data-role="admin">Admin<br><small>OTP 8080</small></button>
+        </div>
+        <label>Mobile number</label>
+        <input id="mobileInput" type="tel" maxlength="10" placeholder="Enter 10 digit mobile">
+        <button id="sendOtpBtn" class="primary">Send OTP</button>
+        <div id="otpBox" class="otp-box hidden">
+          <p id="otpHint"></p>
+          <label>Enter OTP</label>
+          <input id="otpInput" type="tel" maxlength="4" placeholder="Enter OTP">
+          <button id="verifyOtpBtn" class="primary">Verify & Login</button>
+        </div>
+        <p id="loginMsg" class="msg"></p>
+      </section>
+    </main>
+
+    <main id="customerPanel" class="screen">
+      <section class="head"><div><span class="badge">Customer Panel</span><h2 id="customerTitle">Welcome</h2><p class="muted">Book ride, share ride, SOS, call and chat.</p></div><div class="id" id="customerId"></div></section>
+      <section class="card">
+        <h3>Book Bike Ride</h3>
+        <div class="grid"><input id="pickupInput" value="Current Location" placeholder="Pickup"><input id="dropInput" value="Mall Road Shimla" placeholder="Drop"></div>
+        <div class="grid"><input id="kmInput" type="number" min="1" value="5" placeholder="KM"><button id="fareBtn" class="primary">Calculate Fare</button></div>
+        <div id="fareResult" class="fare"></div>
+        <button id="bookRideBtn" class="primary">Confirm Booking</button>
+      </section>
+      <section id="rideLiveBox" class="card hidden">
+        <h3>Live Ride</h3>
+        <p><b>Order ID:</b> <span id="liveOrderId"></span></p>
+        <p><b>Rider:</b> Pankaj S. | <b>ID:</b> R4X-R-B7812</p>
+        <p><b>Rider Mobile:</b> 9876547812</p>
+        <p><b>Bike No:</b> HP-XX-1234</p>
+        <div class="pills"><span>Pickup OTP: <b id="pickupOtp"></b></span><span>Drop OTP: <b id="dropOtp"></b></span></div>
+        <div class="actions"><a class="small" href="tel:9876547812">Call Rider</a><button id="shareRideBtn" class="small">Share Ride</button><button id="sosBtn" class="small danger">SOS</button></div>
+      </section>
+      <section class="card">
+        <h3>Chat</h3>
+        <div class="quick"><button>I am coming in 5 min</button><button>Please wait</button><button>Share landmark</button><button>Call me</button></div>
+        <div id="chatLog" class="chat"></div>
+        <div class="chatbox"><input id="chatInput" placeholder="Type your message..."><button id="sendChatBtn" class="primary">Send</button></div>
+      </section>
+    </main>
+
+    <main id="riderPanel" class="screen">
+      <section class="head"><div><span class="badge">Rider Panel</span><h2>R4X-R-B7812</h2><p class="muted">Accept order, call/message customer, OTP start/end ride.</p></div><div class="id">Online</div></section>
+      <section class="card"><h3>Nearby Order</h3><p><b>Order:</b> R4X-O-0001</p><p><b>Customer:</b> R4X-C-A2585 | 9929562585</p><p><b>Pickup:</b> Current Location</p><p><b>Drop:</b> Mall Road Shimla</p><p><b>Fare:</b> ₹72 | <b>Rider:</b> ₹50</p><div class="actions"><button class="primary">Accept Ride</button><a class="small" href="tel:9929562585">Call Customer</a><button class="small">Message</button></div></section>
+      <section class="card"><h3>OTP Ride Control</h3><input placeholder="Enter Pickup OTP"><button class="primary">Start Ride</button><input placeholder="Enter Drop OTP"><button class="primary">Complete Ride</button></section>
+    </main>
+
+    <main id="adminPanel" class="screen">
+      <section class="head"><div><span class="badge">Admin Panel</span><h2>Owner Dashboard</h2><p class="muted">Search orders, riders, cancellation, disputes and settlement.</p></div><div class="id">Admin 8080</div></section>
+      <section class="card"><h3>Search</h3><input id="adminSearch" placeholder="Search Order ID / Rider ID / Mobile / Issue"><div class="table"><div class="tr th"><span>Order</span><span>Rider</span><span>Status</span><span>Action</span></div><div class="tr"><span>R4X-O-0001</span><span>R4X-R-B7812</span><span>Active</span><span>View</span></div><div class="tr"><span>R4X-O-0002</span><span>R4X-R-A2585</span><span>Cancel Review</span><span>View</span></div></div></section>
+      <section class="card"><h3>Rider Details</h3><p><b>Rider ID:</b> R4X-R-B7812</p><p><b>Mobile:</b> 9876547812</p><p><b>Total rides:</b> 38 | <b>Completed:</b> 35 | <b>Cancelled:</b> 3</p><p><b>Rating:</b> 4.8 | <b>Settlement due:</b> ₹370</p></section>
+      <section class="card"><h3>Cancel & Dispute</h3><div class="quick"><button>Pending Review</button><button>Photo Required</button><button>7-Day Hold</button><button>Approved</button><button>Rejected</button></div><p><b>Late cancel:</b> customer free cancel, rider route + reason + photo proof review.</p></section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

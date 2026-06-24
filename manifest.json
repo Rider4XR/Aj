@@ -1,0 +1,9 @@
+{
+  "name": "Rider4XR OTP Demo",
+  "short_name": "Rider4XR",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#07080c",
+  "theme_color": "#ef233c",
+  "icons": []
+}
